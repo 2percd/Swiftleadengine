@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swift Lead Engine — Qualified Home Loan Leads for Perth Brokers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --ink:    #0D1B2A;
+  --navy:   #112240;
+  --green:  #1DB954;
+  --green2: #17a349;
+  --mist:   #F4F7F2;
+  --slate:  #5A7184;
+  --border: #DDE4DC;
+  --white:  #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 6vw;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.logo span { color: var(--green); }
+.nav-cta {
+  background: var(--green);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+  letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: var(--green2); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex; align-items: center;
+  padding: 140px 6vw 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(29,185,84,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(29,185,84,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+/* subtle grid lines */
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-inner { position: relative; z-index: 1; max-width: 680px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(29,185,84,0.12);
+  border: 1px solid rgba(29,185,84,0.3);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--green);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  display: block;
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
+}
+h1 em {
+  font-style: normal;
+  color: var(--green);
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  max-width: 520px;
+  margin-bottom: 40px;
+  opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+}
+
+.hero-actions {
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+  opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--green2); transform: translateY(-1px); }
+.btn-primary svg { transition: transform 0.2s; }
+.btn-primary:hover svg { transform: translateX(3px); }
+
+.btn-ghost {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 15px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
+
+/* ─── SECTION SHARED ─── */
+section { padding: 100px 6vw; }
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.lead {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--slate);
+  line-height: 1.75;
+  max-width: 540px;
+}
+
+/* ─── HOW IT WORKS ─── */
+.how { background: var(--mist); }
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  margin-top: 60px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.step {
+  background: var(--white);
+  padding: 40px 36px;
+  position: relative;
+  transition: background 0.2s;
+}
+.step:hover { background: #f9fbf8; }
+.step-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 20px;
+  letter-spacing: -0.04em;
+}
+.step-icon {
+  width: 44px; height: 44px;
+  background: rgba(29,185,84,0.1);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.step-icon svg { color: var(--green); }
+.step h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.step p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--slate);
+  line-height: 1.7;
+}
+
+/* ─── WHAT YOU GET ─── */
+.what { background: var(--white); }
+.what-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media(max-width:780px){ .what-inner { grid-template-columns: 1fr; gap: 48px; } }
+
+.lead-card {
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 32px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.lead-card::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(29,185,84,0.2) 0%, transparent 70%);
+}
+.lead-card-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 6px;
+}
+.lead-card-label::before {
+  content: ''; display: block;
+  width: 16px; height: 1px;
+  background: rgba(255,255,255,0.3);
+}
+.lead-field {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px;
+}
+.lead-field:last-child { border-bottom: none; }
+.field-name {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.field-value {
+  font-size: 0.92rem;
+  color: var(--white);
+  font-weight: 400;
+  text-align: right;
+}
+.field-value.green { color: var(--green); font-weight: 500; }
+
+.what-points { list-style: none; }
+.what-points li {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.97rem;
+  color: var(--ink);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.what-points li:first-child { border-top: 1px solid var(--border); }
+.what-points li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  background: rgba(29,185,84,0.12);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 3px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%231DB954' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ─── TRIAL ─── */
+.trial {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.trial::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 100% 50%, rgba(29,185,84,0.1) 0%, transparent 60%);
+}
+.trial-inner {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+}
+@media(max-width:700px){ .trial-inner { grid-template-columns: 1fr; gap: 36px; } }
+.trial h2 { color: var(--white); }
+.trial .lead { color: rgba(255,255,255,0.6); }
+.trial-badge {
+  flex-shrink: 0;
+  background: rgba(29,185,84,0.12);
+  border: 1px solid rgba(29,185,84,0.25);
+  border-radius: 14px;
+  padding: 32px 36px;
+  text-align: center;
+}
+.trial-badge .big {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--green);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.trial-badge .small {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+/* ─── CTA ─── */
+.cta-section {
+  background: var(--mist);
+  text-align: center;
+  padding: 120px 6vw;
+}
+.cta-section h2 { max-width: 560px; margin: 0 auto 16px; }
+.cta-section .lead { margin: 0 auto 44px; text-align: center; max-width: 460px; }
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 32px 6vw;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+footer .logo { font-size: 1rem; }
+.footer-note {
+  font-size: 0.8rem;
+  color: var(--slate);
+  font-weight: 300;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <a href="#" class="logo">Swift<span>Lead</span> Engine</a>
+    <a href="#book" class="nav-cta">Book a free call →</a>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Perth mortgage brokers</div>
+      <h1>Qualified home loan<br/><em>leads, delivered.</em></h1>
+      <p class="hero-sub">
+        We generate qualified home loan enquiries for independent mortgage brokers in Perth — so you spend your time talking to people who are ready to borrow, not chasing dead ends.
+      </p>
+      <div class="hero-actions">
+        <a href="#book" class="btn-primary">
+          Book a free 15-min call
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#how" class="btn-ghost">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section class="how" id="how">
+    <div class="section-label reveal">How it works</div>
+    <h2 class="reveal">Three steps. No fluff.</h2>
+    <p class="lead reveal">We handle everything from ad to enquiry. You just get the lead.</p>
+
+```
+<div class="how-grid">
+  <div class="step reveal">
+    <div class="step-num">01</div>
+    <div class="step-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    </div>
+    <h3>We run targeted ads</h3>
+    <p>We build and run paid ads targeting Perth residents who are actively looking for a home loan — first home buyers, refinancers, upgraders.</p>
+  </div>
+  <div class="step reveal">
+    <div class="step-num">02</div>
+    <div class="step-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    </div>
+    <h3>Borrowers fill in a form</h3>
+    <p>Interested borrowers complete a short qualification form — loan purpose, loan size, contact details. No vague enquiries.</p>
+  </div>
+  <div class="step reveal">
+    <div class="step-num">03</div>
+    <div class="step-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 5.55 5.55l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </div>
+    <h3>You get the warm lead</h3>
+    <p>The complete enquiry is delivered straight to you — ready to call. No middlemen, no delays, no tyre kickers.</p>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- WHAT YOU GET -->
+
+  <section class="what" id="leads">
+    <div class="what-inner">
+      <div>
+        <div class="section-label reveal">What's included</div>
+        <h2 class="reveal">Every lead, fully qualified.</h2>
+        <p class="lead reveal" style="margin-bottom:36px;">Each enquiry arrives with everything you need to make contact and have a real conversation — not a name and a prayer.</p>
+        <ul class="what-points reveal">
+          <li>Full name and direct phone number</li>
+          <li>Email address</li>
+          <li>Loan purpose — purchase, refinance, investment</li>
+          <li>Approximate loan amount</li>
+          <li>Delivered in real time, directly to you</li>
+          <li>No shared leads — you're the only broker receiving it</li>
+        </ul>
+      </div>
+
+```
+  <div class="reveal">
+    <div class="lead-card">
+      <div class="lead-card-label">Sample lead</div>
+      <div class="lead-field">
+        <span class="field-name">Name</span>
+        <span class="field-value">James Whitfield</span>
+      </div>
+      <div class="lead-field">
+        <span class="field-name">Phone</span>
+        <span class="field-value">04XX XXX XXX</span>
+      </div>
+      <div class="lead-field">
+        <span class="field-name">Email</span>
+        <span class="field-value">j.whitfield@email.com</span>
+      </div>
+      <div class="lead-field">
+        <span class="field-name">Loan purpose</span>
+        <span class="field-value green">First home purchase</span>
+      </div>
+      <div class="lead-field">
+        <span class="field-name">Loan amount</span>
+        <span class="field-value green">$550,000</span>
+      </div>
+      <div class="lead-field">
+        <span class="field-name">Location</span>
+        <span class="field-value">Perth, WA</span>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- TRIAL OFFER -->
+
+  <section class="trial">
+    <div class="trial-inner">
+      <div>
+        <div class="section-label reveal" style="color:rgba(29,185,84,0.8)">Low-risk start</div>
+        <h2 class="reveal">Try it before you commit.</h2>
+        <p class="lead reveal">
+          We offer a small trial batch so you can see the quality of leads firsthand — before any ongoing agreement. If it doesn't feel right, you walk away. No pressure, no lock-in.
+        </p>
+        <p class="lead reveal" style="margin-top:16px; font-style:italic; font-size:0.9rem;">
+          Details discussed on the call — the only goal of that 15 minutes is to see if this makes sense for your business.
+        </p>
+      </div>
+      <div class="trial-badge reveal">
+        <div class="big">15 min</div>
+        <div class="small">Free discovery call<br/>No obligation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta-section" id="book">
+    <div class="section-label reveal" style="text-align:center;">Book a call</div>
+    <h2 class="reveal">Ready to see if this fits?</h2>
+    <p class="lead reveal">
+      15 minutes. We'll cover how it works, what a trial looks like, and answer any questions. No pitch deck, no hard sell.
+    </p>
+    <a href="https://calendly.com" class="btn-primary reveal" style="display:inline-flex;">
+      Book your free 15-min call
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <a href="#" class="logo">Swift<span>Lead</span> Engine</a>
+    <p class="footer-note">Perth, Western Australia &nbsp;·&nbsp; hello@swiftleadengine.com.au</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          const siblings = [...e.target.parentElement.querySelectorAll('.reveal')];
+          const delay = siblings.indexOf(e.target) * 80;
+          setTimeout(() => e.target.classList.add('visible'), delay);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
