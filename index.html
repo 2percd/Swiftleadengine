@@ -316,12 +316,24 @@
       margin-bottom: 48px;
     }
 
-    .calendly-inline-widget {
+    .calendly-wrap {
       max-width: 900px;
       margin: 0 auto;
+      background: #ffffff;
       border-radius: 12px;
       overflow: hidden;
+      padding: 8px;
+    }
+
+    .calendly-inline-widget {
       min-width: 320px;
+      background: #ffffff;
+      color-scheme: light;
+    }
+
+    .calendly-inline-widget iframe {
+      background: #ffffff !important;
+      color-scheme: light;
     }
 
     /* ── FOOTER ── */
@@ -582,7 +594,9 @@
     <div class="container">
       <h2>Ready to get started?</h2>
       <p>Book a free 15 minute call and we'll show you exactly how it works.</p>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/jaylin-swiftleadengine/15min?hide_gdpr_banner=1&background_color=ffffff&text_color=1a1a1a&primary_color=c9a84c" style="min-width:320px;height:700px;"></div>
+      <div class="calendly-wrap">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/jaylin-swiftleadengine/15min?hide_gdpr_banner=1&background_color=ffffff&text_color=1a1a1a&primary_color=c9a84c" style="min-width:320px;height:700px;"></div>
+      </div>
     </div>
   </section>
 
