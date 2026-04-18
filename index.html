@@ -316,15 +316,12 @@
       margin-bottom: 48px;
     }
 
-    .calendly-placeholder {
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 64px 24px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      max-width: 740px;
+    .calendly-inline-widget {
+      max-width: 900px;
       margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      min-width: 320px;
     }
 
     /* ── FOOTER ── */
@@ -585,11 +582,15 @@
     <div class="container">
       <h2>Ready to get started?</h2>
       <p>Book a free 15 minute call and we'll show you exactly how it works.</p>
-      <div class="calendly-placeholder">
-        [Calendly embed goes here]
-      </div>
+      <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/jaylin-swiftleadengine/30min?hide_gdpr_banner=1&background_color=161b22&text_color=ffffff&primary_color=c9a84c"
+        style="height:700px;"
+      ></div>
     </div>
   </section>
+
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
   <!-- ── FOOTER ── -->
   <footer>
